@@ -1,6 +1,6 @@
 # AArch64-Assembler
 Main Purpose: Takes in assembly source code and converts it into binary executable code
-What I contributed to: 
+What I coded: 
 1. assemble.c and .h files - Contains the main body of the algorithm
 2. structure.c and .h files - Contains all the key structs and related functions for them
 

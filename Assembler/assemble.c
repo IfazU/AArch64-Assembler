@@ -18,8 +18,9 @@
 #define STRINGS_SIZE 20
 
 
-// typeArray[num of elems][length] - Contains all the types
-// Needed for parsing and determining if a word is a label or not
+/* typeArray[num of elems][length] - Contains all the types of instructions
+Needed for parsing and determining if a word is a label or not */
+
 char typeArray[39][5] = {"add", "adds", "sub", "subs", "cmp", "cmn",
                          "neg", "negs", "and", "ands", "bic", "bics",
                          "eor", "orr", "eon", "orn", "tst", "movk",
@@ -28,6 +29,7 @@ char typeArray[39][5] = {"add", "adds", "sub", "subs", "cmp", "cmn",
                          "b.lt", "b.gt", "b.le", "b.al",  "br", "str",
                          "ldr", "nop", ".int"};
 
+// Contains all the function pointers which will be used to process each type of instruction
 nodeFunc funcArray[] = {arithmetic, arithmetic, arithmetic, arithmetic, cmp, cmn, neg,
                     negs, arith_or_logic, arith_or_logic, arith_or_logic, arith_or_logic,
                     arith_or_logic, arith_or_logic, arith_or_logic, arith_or_logic, tst,
@@ -46,7 +48,7 @@ int main(int argc, char **argv) {
   int symMaxSize = INITIAL_SYMBOLTABLE_SIZE;
   symbolEntry symTable[INITIAL_SYMBOLTABLE_SIZE];
   int symCount = 0;
-  int memoryAddress = 0;
+  int memoryAddress = 0;  // Track what memory location we should insert the instruction
   char *token;   // Hold token from tokenizer
   char **argsCopy = createMallocedStrings(STRINGS_COUNT, STRINGS_SIZE); // Extract and store type and arguments from each line
   int argsCount = 0; // Keep count of arguments extracted from line

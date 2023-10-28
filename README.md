@@ -14,43 +14,43 @@ We broke our algorithm into 4 phases:
 
 Phase One: Initialization and Parsing
 In the first phase, the program initializes essential data structures and begins parsing the input assembly file.
-
 Initialization of Function Pointers and Symbol Table:
-
 The program initializes a function pointer table funcPtrTable containing pointers to various processing functions for different types of instructions.
 A symbol table symTable is initialized to store labels and their corresponding memory addresses.
 Parsing the Assembly File:
-
 The program reads the input assembly file line by line.
 Each line is tokenized to extract labels, instruction types, and arguments.
 Labels are stored in the symTable, while instructions and arguments are processed further.
+
+
+
 Phase Two: Node Creation and Symbol Table Filling
 In the second phase, the parsed data is used to create nodes, forming a linked list representation of the assembly code. Additionally, the symbol table is populated with labels and their corresponding addresses.
-
 Node Creation:
-
 Nodes are created to represent each assembly instruction.
 The nodes contain information such as the memory address, instruction type, and associated arguments.
 Symbol Table Filling:
-
 Labels encountered during parsing are added to the symTable with their respective memory addresses.
+
+
+
 Phase Three: Instruction Processing and Binary Conversion
 In the third phase, the program processes each node, converts assembly instructions into binary format, and writes the binary output to a file.
-
 Node Processing:
-
 Each node is processed using the appropriate function pointer obtained from the funcPtrTable.
 The corresponding function processes the instruction and returns its binary representation.
 Binary Conversion and Output:
-
 Processed instructions are converted into 32-bit binary words.
 The binary words are written to the output binary file, creating the final binary representation of the input assembly code.
+
+
+
 Phase Four: Clean-up and Memory Management
 In the final phase, the program performs clean-up tasks, deallocates memory, and ensures proper closure of files.
-
 Memory Deallocation:
-
 All allocated memory for nodes, symbol tables, and strings is deallocated to prevent memory leaks.
 File Closure:
-
+The input and output files are closed to ensure that all data is written and resources are released properly.
+All allocated memory for nodes, symbol tables, and strings is deallocated to prevent memory leaks.
+File Closure:
 The input and output files are closed to ensure that all data is written and resources are released properly.

@@ -100,7 +100,8 @@ nodeFunc getFuncPtr(char *label, funcPtrTable funTable) {
   return NULL;
 }
 
-//funcPtrEntry[] createTable
+
+// Node functions
 
 
 Node createNode(uint32_t memoryAddress, const char *type, int num, const char** args) {
@@ -198,7 +199,10 @@ void printNode(Node node) {
   printf("%s\n", builder);
 }
 
-//Creates a new linked list with the specified start and end nodes.
+
+//List functions
+
+
 List createList(Node startNode, Node endNode, int count) {
   List list = malloc(sizeof(struct List));
   if (list == NULL) {

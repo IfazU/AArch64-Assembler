@@ -10,7 +10,8 @@
 #define INITIAL_SYMBOLTABLE_SIZE 100
 #define FUNC_TABLE_SIZE 50
 
-// Node and List
+/* Node for storing each of the instructions
+and its properties in a linked list */
 typedef struct Node *Node;
 struct Node{
     uint32_t memoryAddress;
@@ -20,7 +21,8 @@ struct Node{
     Node next;
 };
 
-
+/* One-way linked list for holding
+all the instruction nodes */
 struct List{
     int count;
     Node first;
@@ -29,13 +31,16 @@ struct List{
 typedef struct List *List;
 
 
-// Symbol Entry and Table
+/* Symbol Entry contains the name of 
+branch instructions and their address */
 struct symbolEntry {
     char label[MAX_LABEL_SIZE];
     uint32_t memoryAddress;
 };
 typedef struct symbolEntry *symbolEntry;
 
+
+/* Array of all the Symbol Entries */
 struct symbolTable {
     int count;
     symbolEntry table[INITIAL_SYMBOLTABLE_SIZE];
@@ -44,7 +49,6 @@ typedef struct symbolTable *symbolTable;
 
 
 // Function pointers and table
-
 typedef uint32_t (*nodeFunc)(Node);
 
 struct funcPtrEntry {
@@ -80,7 +84,7 @@ extern Node addNextNode(Node currNode, Node addNode, List list);
 extern void printNode(Node node);
 
 
-// List creation
+// List creation and printing
 extern List createList(Node startNode, Node endNode, int count);
 extern List createListWithStart(Node startNode);
 extern List createListWithBoth(Node startNode, Node endNode);
